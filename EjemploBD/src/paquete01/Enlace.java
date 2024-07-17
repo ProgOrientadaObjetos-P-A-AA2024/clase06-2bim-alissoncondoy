@@ -47,7 +47,7 @@ public class Enlace {
         try{  
             establecerConexion();
             Statement statement = obtenerConexion().createStatement();
-            String data = String.format("INSERT INTO Ciudad (nombre, poblacion) "
+            String data = String.format("INSERT INTO Ciudad (nombre, poblacion) "//Ciudad es el nomble de la tabla que esta creada en la base de datos
                     + "values ('%s', %d)", ciudad.obtenerNombre(), 
                     ciudad.obtenerPoblacion());
             statement.executeUpdate(data);
@@ -68,6 +68,12 @@ public class Enlace {
             
             ResultSet rs = statement.executeQuery(data);
             while(rs.next()){
+                
+                //Al momento de ingresar al arreglo lo que sucede es que se 
+                //recorre la base de datos y en cada registro enviarlo al objeto 
+                //miCiudad
+                        
+                
                 Ciudad miCiudad = new Ciudad(rs.getString("nombre"),
                 rs.getInt("poblacion"));
                 lista.add(miCiudad);
